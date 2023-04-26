@@ -43,6 +43,13 @@ class App extends Component{
       novoComentario: {nome: '', email: '', mensagem: ''}})
   }
 
+  // Remover um comentário 
+  removerComentario = comentario=>{
+    let lista = this.state.comentarios;
+    lista = lista.filter(c => c!== comentario);
+    this.setState({comentarios: lista})
+  }
+
   // Fução que adiciona um novo comentário (dinâmico)
   digitacao = evento => {
     console.log(evento.target)
@@ -61,7 +68,10 @@ class App extends Component{
           key={indice}
           nome={comentario.nome} 
           email={comentario.email}
-          data={comentario.data}>{comentario.mensagem}</Comentario>
+          data={comentario.data}
+          onRemove={this.removerComentario.bind(this, comentario)}>
+            {comentario.mensagem}
+          </Comentario>
         ))}
         
         <form method="POST" onSubmit={this.adicionarComentario}>
