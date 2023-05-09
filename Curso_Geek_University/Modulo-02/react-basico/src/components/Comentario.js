@@ -1,16 +1,25 @@
 import React from 'react';
-import './comentario.css'
 
-// JSX
+import './Comentario.css';
+import imagemUsuario from './user.png';
 
 const Comentario = props => {
-    return <div className="comentario">
-        <h2> {props.nome} </h2>
-        <p>{props.email}</p>
-        <p>{props.children}</p>
-        <p>{props.data.toString()}</p>
-        <button onClick={props.onRemove}>&times;</button>
+    // const estilo = {
+    //     color: 'red',
+    //     padding: '10px',
+    //     fontSize: '30px'
+    // }
+
+    return <div className="Comentario">
+        <img class="avatar" src={imagemUsuario} alt={props.nome} />
+        <div class="conteudo">
+            <h2 class="nome">{props.nome}</h2>
+            <p class="email">{props.email}</p>
+            <p class="mensagem">{props.children}</p>
+            <p class="data"></p>
+            <button onClick={props.onRemove}>&times;</button>
+        </div>
     </div>
-    }
+}
 
 export default Comentario;
