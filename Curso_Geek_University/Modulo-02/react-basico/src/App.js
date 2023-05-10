@@ -16,7 +16,7 @@ class App extends Component {
       {
         nome: 'Pedro',
         email: 'pedro@mail.com',
-        data: new Date(2020, 3, 22, 12, 15, 0),
+        data: new Date(2020, 3, 22),
         mensagem: 'Olá, tudo bem sim....'
       }
     ],
