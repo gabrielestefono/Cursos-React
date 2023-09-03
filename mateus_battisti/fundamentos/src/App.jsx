@@ -6,6 +6,7 @@ import TemplateExpressions from './components/TemplateExpressions'
 // Styles / CSS
 import './App.css'
 import MyComponent from './components/MyComponent'
+import Events from './components/Events'
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
       <h1>Fundamentos React</h1>
       <FirstComponent />
       <TemplateExpressions />
-      <MyComponent/>
+      <MyComponent />
+      <Events/>
     </div>
   )
 }
