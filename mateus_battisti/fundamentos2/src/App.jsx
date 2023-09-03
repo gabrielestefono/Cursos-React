@@ -1,5 +1,6 @@
 import './App.css';
 import imagem from "./assets/sea.jpg";
+import ManageData from './components/ManageData';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <div>
         <img src={imagem} alt="Foto do mar com umas montanhas" width={600} height={400}/>
       </div>
+      <ManageData/>
     </>
   )
 }
