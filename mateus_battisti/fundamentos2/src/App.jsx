@@ -8,6 +8,7 @@ import ShowUsername from './components/ShowUsername';
 import CarDetails from './components/CarDetails';
 import Fragment from './components/Fragment';
 import Container from './components/Container';
+import ExecuteFuncao from './components/ExecuteFuncao';
 
 function App() {
 
@@ -18,6 +19,10 @@ function App() {
     { id: 2, brand: "KIA", color: "Branco", newCar: false, km: 34343 },
     { id: 3, brand: "Renault", color: "Azul", newCar: false, km: 234 }
   ];
+
+  function showMessege(){
+    console.log("Evento do componente pai!")
+  }
 
   return (
     <>
@@ -48,6 +53,7 @@ function App() {
       <Container myValue={"Testing2"}>
         <h5>E este é o conteúdo</h5>
       </Container>
+      <ExecuteFuncao myFunction={showMessege}/>
     </>
   )
 }
