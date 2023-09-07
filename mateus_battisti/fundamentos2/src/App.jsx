@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import './App.css';
 import imagem from "./assets/sea.jpg";
 import ConditionalRender from './components/ConditionalRender';
 import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
+import ShowUsername from './components/ShowUsername';
 
 function App() {
+
+  const [userName] = useState("Maria");
 
   return (
     <>
@@ -17,9 +21,10 @@ function App() {
       <div>
         <img src={imagem} alt="Foto do mar com umas montanhas" width={600} height={400}/>
       </div>
-      <ManageData />
-      <ListRender />
-      <ConditionalRender/>
+      <ManageData/>
+      <ListRender/>
+      <ConditionalRender />
+      <ShowUsername name={userName} />
     </>
   )
 }
