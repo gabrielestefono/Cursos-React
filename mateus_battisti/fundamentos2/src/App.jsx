@@ -7,6 +7,7 @@ import ManageData from './components/ManageData';
 import ShowUsername from './components/ShowUsername';
 import CarDetails from './components/CarDetails';
 import Fragment from './components/Fragment';
+import Container from './components/Container';
 
 function App() {
 
@@ -41,6 +42,12 @@ function App() {
         <CarDetails key={car.id} brand={car.brand} km={car.km} color={car.color} newCar={car.newCar}/>
       ))}
       <Fragment/>
+      <Container myValue={"Testing"}>
+        <p>E este é o conteúdo</p>
+      </Container>
+      <Container myValue={"Testing2"}>
+        <h5>E este é o conteúdo</h5>
+      </Container>
     </>
   )
 }
