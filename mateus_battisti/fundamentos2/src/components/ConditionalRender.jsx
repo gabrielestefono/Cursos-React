@@ -5,7 +5,7 @@ const ConditionalRender = () => {
 
 	const [name] = useState('João');
 	return (
-		<>
+		<div>
 			<h1>Isso será exibido</h1>
 			{x && <p>Se X for true, sim!</p>}
 			{!x && <p>Agora x é falso</p>}
@@ -18,7 +18,7 @@ const ConditionalRender = () => {
 						<p>Nome não encontrado!</p>
 					</div>
 				)}
-		</>
+		</div>
 	)
 }
 
