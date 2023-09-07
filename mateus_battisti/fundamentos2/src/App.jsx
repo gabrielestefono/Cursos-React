@@ -11,6 +11,12 @@ function App() {
 
   const [userName] = useState("Maria");
 
+  const cars = [
+    { id: 1, brand: "Ferrari", color: "Amarela", newCar: true, km: 0 },
+    { id: 2, brand: "KIA", color: "Branco", newCar: false, km: 34343 },
+    { id: 3, brand: "Renault", color: "Azul", newCar: false, km: 234 }
+  ];
+
   return (
     <>
       <h1>Avançando no react</h1>
@@ -28,7 +34,11 @@ function App() {
       <ShowUsername name={userName} />
       <CarDetails brand="VW" km={100000} color="azul"  newCar={false}/>
       <CarDetails brand="Ford" km={0} color="Vermelho"  newCar={true}/>
-      <CarDetails brand="Fiat" km={4500} color="Branco" newCar={false}/>
+      <CarDetails brand="Fiat" km={4500} color="Branco" newCar={false} />
+      {/* Loop em array de objetos */}
+      {cars.map((car) => (
+        <CarDetails key={car.id} brand={car.brand} km={car.km} color={car.color} newCar={car.newCar}/>
+      ))}
     </>
   )
 }
