@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-const CarDetails = ({ brand, km, color }) => {
+const CarDetails = ({ brand, km, color, newCar }) => {
 	return (
 		<div>
 			<h2>Detalhes do carro</h2>
@@ -8,6 +8,7 @@ const CarDetails = ({ brand, km, color }) => {
 				<li>Marca: {brand}</li>	
 				<li>Km: {km}</li>	
 				<li>Cor: {color}</li>
+				<li>{ newCar && <p>Este carro é novo</p>}</li>
 			</ul>
 		</div>
 	)
@@ -16,7 +17,8 @@ const CarDetails = ({ brand, km, color }) => {
 CarDetails.propTypes = {
 	brand: PropTypes.string,
 	km: PropTypes.number,
-	color: PropTypes.string
+	color: PropTypes.string,
+	newCar: PropTypes.bool
 }
 
 export default CarDetails;
