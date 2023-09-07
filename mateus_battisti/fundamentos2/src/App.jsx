@@ -1,5 +1,6 @@
 import './App.css';
 import imagem from "./assets/sea.jpg";
+import ConditionalRender from './components/ConditionalRender';
 import ListRender from './components/ListRender';
 import ManageData from './components/ManageData';
 
@@ -17,7 +18,8 @@ function App() {
         <img src={imagem} alt="Foto do mar com umas montanhas" width={600} height={400}/>
       </div>
       <ManageData />
-      <ListRender/>
+      <ListRender />
+      <ConditionalRender/>
     </>
   )
 }
