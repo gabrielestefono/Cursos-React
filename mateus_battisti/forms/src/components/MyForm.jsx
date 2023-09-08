@@ -6,6 +6,7 @@ const MyForm = ({ user }) => {
 
 	const [name, setName] = useState(user ? user.name : '');
 	const [email, SetEmail] = useState(user ? user.email : '');
+	const [bio, setBio] = useState(user ? user.bio : '')
 
 	const handleName = (event) => {
 		setName(event.target.value);
@@ -16,6 +17,7 @@ const MyForm = ({ user }) => {
 		console.log('Enviado com sucesso!')
 		setName('');
 		SetEmail('');
+		setBio('')
 	}
 
 	return (
@@ -29,7 +31,11 @@ const MyForm = ({ user }) => {
 					<span>Email</span>
 					<input type="text" name="Email" placeholder="Digite o seu email" onChange={(e) => SetEmail(e.target.value)} value={email}/>
 				</label>
-				<input type="submit" value="Enviar"/>
+				<label>
+					<span>Bio:</span>
+					<textarea name="bio" placeholder="Descrição do usuário" onChange={(e) => setBio(e.target.value)} value={bio}></textarea>
+				</label>
+				<input type="submit" value="Enviar" />
 			</form>
 		</>
 	)
@@ -38,7 +44,8 @@ const MyForm = ({ user }) => {
 MyForm.propTypes = {
 	user: PropTypes.any,
 	name: PropTypes.any,
-	email: PropTypes.any
+	email: PropTypes.any,
+	bio: PropTypes.any
 }
 
 export default MyForm;
