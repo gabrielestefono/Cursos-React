@@ -10,10 +10,6 @@ const MyForm = () => {
 		setName(e.target.value)
 	}
 
-	const handleEmail = (e) => {
-		SetEmail(e.target.value)
-	}
-
 	return (
 		<>
 			<form>
@@ -23,7 +19,7 @@ const MyForm = () => {
 				</div>
 				<label>
 					<span>Email</span>
-					<input type="text" name="Email" placeholder="Digite o seu email" onChange={handleEmail}/>
+					<input type="text" name="Email" placeholder="Digite o seu email" onChange={(e) => SetEmail(e.target.value)}/>
 				</label>
 				<input type="submit" value="Enviar"/>
 			</form>
