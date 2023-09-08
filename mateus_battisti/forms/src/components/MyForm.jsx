@@ -6,13 +6,18 @@ const MyForm = () => {
 	const [name, setName] = useState();
 	const [email, SetEmail] = useState();
 
-	const handleName = (e) => {
-		setName(e.target.value)
+	const handleName = (event) => {
+		setName(event.target.value);
+	}
+
+	const handleSubmit = (event) => {
+		event.preventDefault();
+		console.log('Enviando o formulário');
 	}
 
 	return (
 		<>
-			<form>
+			<form onSubmit={handleSubmit}>
 				<div>
 					<label htmlFor="name">Nome</label>
 					<input type="text" name="name" placeholder="Digite o seu nome" onChange={handleName}/>
