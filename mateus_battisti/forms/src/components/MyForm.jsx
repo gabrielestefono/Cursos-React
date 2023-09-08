@@ -13,6 +13,9 @@ const MyForm = ({ user }) => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		console.log('Enviado com sucesso!')
+		setName('');
+		SetEmail('');
 	}
 
 	return (
