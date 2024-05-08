@@ -1,19 +1,19 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent }from 'react';
 import './App.css';
-import { ProductInterface } from './interfaces/product.interface';
+import { Product } from './interfaces/product.interface';
 
 function App() {
   // Resgatando dados
   const url = "http://localhost:3000/products";
 
-  const [products, setProducts] = useState<ProductInterface[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(url);
-      const data: ProductInterface[] = await res.json();
+      const data: Product[] = await res.json();
       setProducts(data);
     };
 
@@ -34,6 +34,15 @@ function App() {
       },
       body: JSON.stringify(product),
     });
+
+    // Carregamento Dinâmico
+
+    const adeddedProduct: Product = await res.json();
+
+    setProducts((prevState) => [...prevState, adeddedProduct]);
+
+    setName("");
+    setPrice("");
   }
 
   
