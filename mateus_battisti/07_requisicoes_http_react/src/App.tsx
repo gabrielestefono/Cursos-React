@@ -1,6 +1,10 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent }from 'react';
+import React, { useState, ChangeEvent, FormEvent }from 'react';
 import './App.css';
 import { Product } from './interfaces/product.interface';
+
+// Custom Hook
+
+import { useFetch } from './hooks/useFetch';
 
 function App() {
   // Resgatando dados
@@ -10,15 +14,19 @@ function App() {
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<string>("");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(url);
-      const data: Product[] = await res.json();
-      setProducts(data);
-    };
+  // Custom Hook
 
-    fetchData();
-  }, []);
+  const { data: items } = useFetch(url);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const res = await fetch(url);
+  //     const data: Product[] = await res.json();
+  //     setProducts(data);
+  //   };
+
+  //   fetchData();
+  // }, []);
 
   // Adição de Produtos
 
@@ -50,7 +58,7 @@ function App() {
     <div className="App">
       <h1>Lista de Produtos</h1>
       <ul>
-        {products.map((produto)=>(<li key={produto.id}>{produto.name} - R$ {produto.price}</li>))}
+        {items?.map((produto)=>(<li key={produto.id}>{produto.name} - R$ {produto.price}</li>))}
       </ul>
       <div className="add-product">
         <form onSubmit={handleSubmit}>
