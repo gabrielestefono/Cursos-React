@@ -54,6 +54,26 @@
       "id": "49d9",
       "name": "Cadeira Gamer",
       "price": "4000"
+    },
+    {
+      "id": "e24a",
+      "name": "Fone de Ouvidos",
+      "price": "200.50"
+    },
+    {
+      "id": "7391",
+      "name": "Fone de Ouvidos",
+      "price": "200.50"
+    },
+    {
+      "id": "692e",
+      "name": "Fone de Ouvidos",
+      "price": "200.50"
+    },
+    {
+      "id": "a82f",
+      "name": "Fone de Ouvidos",
+      "price": "200.50"
     }
   ]
 }

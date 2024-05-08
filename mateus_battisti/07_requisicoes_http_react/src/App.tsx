@@ -3,51 +3,29 @@ import './App.css';
 import { Product } from './interfaces/product.interface';
 
 // Custom Hook
-
 import { useFetch } from './hooks/useFetch';
 
 function App() {
   // Resgatando dados
   const url = "http://localhost:3000/products";
 
-  const [products, setProducts] = useState<Product[]>([]);
   const [name, setName] = useState<string>("");
   const [price, setPrice] = useState<string>("");
 
   // Custom Hook
 
-  const { data: items } = useFetch(url);
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const res = await fetch(url);
-  //     const data: Product[] = await res.json();
-  //     setProducts(data);
-  //   };
-
-  //   fetchData();
-  // }, []);
+  const { data: items, httpConfig } = useFetch(url);
 
   // Adição de Produtos
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const product = {name,price};
+    const product: Product = {name, price};
 
-    const res = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(product),
-    });
+    // Refatorando POST
 
-    // Carregamento Dinâmico
-
-    const adeddedProduct: Product = await res.json();
-
-    setProducts((prevState) => [...prevState, adeddedProduct]);
+    httpConfig(product, "POST");
 
     setName("");
     setPrice("");
