@@ -1,17 +1,29 @@
 {
-	"products": [
-		{
-			"id": 1,
-			"name": "Camisa",
-			"price": 59.9
-		},{
-			"id": 2,
-			"name": "Calça Vermelha",
-			"price": 90
-		},{
-			"id": 3,
-			"name": "Boné aba Reta",
-			"price": 29.9
-		}
-	]
+  "products": [
+    {
+      "id": 1,
+      "name": "Camisa",
+      "price": 59.9
+    },
+    {
+      "id": 2,
+      "name": "Calça Vermelha",
+      "price": 90
+    },
+    {
+      "id": 3,
+      "name": "Boné aba Reta",
+      "price": 29.9
+    },
+    {
+      "id": "489a",
+      "name": "sdasd",
+      "price": "12"
+    },
+    {
+      "id": "cb0b",
+      "name": "Capa",
+      "price": "150.52"
+    }
+  ]
 }

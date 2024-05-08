@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from 'react';
+import React, { useState, useEffect, ChangeEvent, FormEvent }from 'react';
 import './App.css';
 import { ProductInterface } from './interfaces/product.interface';
 
@@ -7,6 +7,8 @@ function App() {
   const url = "http://localhost:3000/products";
 
   const [products, setProducts] = useState<ProductInterface[]>([]);
+  const [name, setName] = useState<string>("");
+  const [price, setPrice] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,7 +20,22 @@ function App() {
     fetchData();
   }, []);
 
-  console.log(products);
+  // Adição de Produtos
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+
+    const product = {name,price};
+
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+  }
+
   
   return (
     <div className="App">
@@ -26,6 +43,13 @@ function App() {
       <ul>
         {products.map((produto)=>(<li key={produto.id}>{produto.name} - R$ {produto.price}</li>))}
       </ul>
+      <div className="add-product">
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="name">Nome: <input type="text" value={name} name='name' id='name' onChange={(e: ChangeEvent<HTMLInputElement>)=>setName(e.target.value)}/></label>
+          <label htmlFor="name">Preço: <input type="number" value={price} name='price' id='price' onChange={(e: ChangeEvent<HTMLInputElement>)=>setPrice(e.target.value)}/></label>
+          <input type="submit" value="Criar"/>
+        </form>
+      </div>
     </div>
   );
 }
