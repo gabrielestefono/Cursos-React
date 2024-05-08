@@ -4,6 +4,8 @@ import { Product } from "../interfaces/product.interface";
 // Custom Hook
 
 export const useFetch = (url: string) => {
+	const [loading, setLoading] = useState<boolean>(false);
+
 	const [data, setData] = useState<Product[] | null>(null);
 
 	// Refatorando POST
@@ -11,6 +13,8 @@ export const useFetch = (url: string) => {
 	const [config, setConfig] = useState<RequestInit | null>(null);
 	const [method, setMethod] = useState<string | null>(null);
 	const [callFetch, setCallFetch] = useState<boolean>(false);
+
+	// Loading
 
 	const httpConfig = (data: Product, method: string) => {
 		if(method === "POST"){
@@ -27,21 +31,24 @@ export const useFetch = (url: string) => {
 	}
 
 	useEffect(()=>{
-		const httpRequest = async () => {
+		const fetchData = async () => {
+			setLoading(true);
 			const res: Response = await fetch(url);
 
 			const json: Product[] = await res.json();
 
 			setData(json)
+			setLoading(false);
 		}
 
-		httpRequest();
+		fetchData();
 	},[url, callFetch]);
 
 	// Refatorando POST
 
 	useEffect( ()=>{
-		const fetchPostData = async () =>{
+		const httpRequest = async () =>{
+			setLoading(true);
 			if(method === "POST"){
 				let fetchOptions: [string, RequestInit] = [url, config!];
 	
@@ -53,8 +60,8 @@ export const useFetch = (url: string) => {
 			}
 		}
 
-		fetchPostData();
+		httpRequest();
 	},[config, method, url])
 
-	return { data, httpConfig };
+	return { data, httpConfig, loading };
 } 

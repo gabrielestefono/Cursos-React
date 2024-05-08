@@ -14,7 +14,7 @@ function App() {
 
   // Custom Hook
 
-  const { data: items, httpConfig } = useFetch(url);
+  const { data: items, httpConfig, loading } = useFetch(url);
 
   // Adição de Produtos
 
@@ -35,14 +35,14 @@ function App() {
   return (
     <div className="App">
       <h1>Lista de Produtos</h1>
-      <ul>
-        {items?.map((produto)=>(<li key={produto.id}>{produto.name} - R$ {produto.price}</li>))}
-      </ul>
+      {/* Loading */}
+      {loading && <p>Carregando Dados</p>}
+      {!loading && <ul> {items?.map((produto)=>(<li key={produto.id}>{produto.name} - R$ {produto.price}</li>))}</ul>}
       <div className="add-product">
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Nome: <input type="text" value={name} name='name' id='name' onChange={(e: ChangeEvent<HTMLInputElement>)=>setName(e.target.value)}/></label>
           <label htmlFor="name">Preço: <input type="number" value={price} name='price' id='price' onChange={(e: ChangeEvent<HTMLInputElement>)=>setPrice(e.target.value)}/></label>
-          <input type="submit" value="Criar"/>
+          <input type="submit" value={loading ? "Aguarde!" : "Criar"} disabled={loading}/>
         </form>
       </div>
     </div>
