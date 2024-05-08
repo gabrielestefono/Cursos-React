@@ -14,6 +14,10 @@ export const useFetch = (url: string) => {
 	const [method, setMethod] = useState<string | null>(null);
 	const [callFetch, setCallFetch] = useState<boolean>(false);
 
+	// Tratando erros
+
+	const [error, setError] = useState<string | null>(null);
+
 	// Loading
 
 	const httpConfig = (data: Product, method: string) => {
@@ -33,11 +37,16 @@ export const useFetch = (url: string) => {
 	useEffect(()=>{
 		const fetchData = async () => {
 			setLoading(true);
-			const res: Response = await fetch(url);
+			try {
+				const res: Response = await fetch(url);
 
-			const json: Product[] = await res.json();
+				const json: Product[] = await res.json();
 
-			setData(json)
+				setData(json)
+			} catch (error: any) {
+				console.log(error.message);
+				setError("Houve algum erro ao carregar a página!");
+			}
 			setLoading(false);
 		}
 
@@ -63,5 +72,7 @@ export const useFetch = (url: string) => {
 		httpRequest();
 	},[config, method, url])
 
-	return { data, httpConfig, loading };
+
+
+	return { data, httpConfig, loading, error };
 } 

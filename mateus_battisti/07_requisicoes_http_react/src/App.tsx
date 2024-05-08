@@ -14,7 +14,7 @@ function App() {
 
   // Custom Hook
 
-  const { data: items, httpConfig, loading } = useFetch(url);
+  const { data: items, httpConfig, loading, error } = useFetch(url);
 
   // Adição de Produtos
 
@@ -36,7 +36,8 @@ function App() {
     <div className="App">
       <h1>Lista de Produtos</h1>
       {/* Loading */}
-      {loading && <p>Carregando Dados</p>}
+      {loading && <p>Carregando Dados...</p>}
+      {error && <p>{error}</p>}
       {!loading && <ul> {items?.map((produto)=>(<li key={produto.id}>{produto.name} - R$ {produto.price}</li>))}</ul>}
       <div className="add-product">
         <form onSubmit={handleSubmit}>
