@@ -14,9 +14,10 @@ export default function Home(){
 			<ul className="products">
 				{items?.map((item) => 
 					(<li key={item.id}>
-						<h2>{item.name}</h2>
-						<p>R$ {item.price}</p>
-					</li>))}
+							<h2>{item.name}</h2>
+							<p>R$ {item.price}</p>
+							<Link to={`product/${item.id}`} className='link'>Detalhes</Link>
+						</li>))}
 			</ul>
 		</div>
 	)
