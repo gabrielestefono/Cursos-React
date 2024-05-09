@@ -6,7 +6,7 @@ import { Product } from "../interfaces/product.interface";
 export const useFetch = (url: string) => {
 	const [loading, setLoading] = useState<boolean>(false);
 
-	const [data, setData] = useState<Product[] | null>(null);
+	const [data, setData] = useState<Product[] | Product | null>(null);
 
 	// Refatorando POST
 
