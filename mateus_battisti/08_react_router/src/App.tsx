@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 
 // 1 - Config React Router
-import { BrowserRouter, Routes, Route} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -25,6 +25,7 @@ function App() {
           <Route path='/product/:id/info' element={<Info/>}/>
           <Route path='/product/:id' element={<Product/>}/>
           <Route path='/search' element={<Search/>}/>
+          <Route path='/company' element={<Navigate to="/about"/>} />
           <Route path='*' element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>
