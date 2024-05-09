@@ -7,6 +7,7 @@ import Home from './pages/home';
 import About from './pages/about';
 import Navbar from './components/navbar';
 import Product from './pages/product';
+import Info from './pages/info';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/about' element={<About/>} />
+          <Route path='/product/:id/info' element={<Info/>}/>
           <Route path='/product/:id' element={<Product/>}/>
         </Routes>
       </BrowserRouter>
