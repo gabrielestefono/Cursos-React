@@ -3,12 +3,14 @@ import './App.css';
 
 // 1 - Config React Router
 import { BrowserRouter, Routes, Route} from "react-router-dom";
-import Home from './pages/home';
-import About from './pages/about';
-import Navbar from './components/navbar';
-import Product from './pages/product';
-import Info from './pages/info';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import About from './pages/About';
+import Info from './pages/Info';
+import Product from './pages/Product';
 import NotFound from './pages/404';
+import SearchForm from './components/SearchForm';
+import Search from './pages/Search';
 
 function App() {
   return (
@@ -16,11 +18,13 @@ function App() {
       <h1>React Router</h1>
       <BrowserRouter>
         <Navbar/>
+        <SearchForm/>
         <Routes>
           <Route path='/' element={<Home/>} />
           <Route path='/about' element={<About/>} />
           <Route path='/product/:id/info' element={<Info/>}/>
           <Route path='/product/:id' element={<Product/>}/>
+          <Route path='/search' element={<Search/>}/>
           <Route path='*' element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>
