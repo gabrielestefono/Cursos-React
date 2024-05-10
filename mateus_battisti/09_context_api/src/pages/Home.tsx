@@ -1,21 +1,27 @@
 import {Link} from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 import './Home.css';
-import { CounterContext } from '../context/CounterContext';
-import { useContext } from 'react';
+// import { CounterContext } from '../context/CounterContext';
+// import { useContext } from 'react';
+import { useCouterContext } from '../hooks/useCounterContext';
 
 export default function Home(){
 	const url = "http://localhost:3000/products";
 
 	const {data: items, error} = useFetch(url);
 
-	const { counter } : any = useContext(CounterContext);
+	const {counter, setCounter} : any = useCouterContext();
+	// const {counter, setCounter} : any = useContext(CounterContext);
 	
 	return (
 		<div>
 			<h1>Produtos</h1>
 			<p>Contador</p>
-			<p>Valor do contador: {counter}</p>
+			<p>Você clicou {counter} vezes</p>
+			<div>
+				<button onClick={()=>{setCounter(counter > 0 ? counter - 1 : counter)}}>Dominuir</button>
+				<button onClick={()=>{setCounter(counter + 1)}}>Aumentar</button>
+			</div>
 			{error && <p>{error}</p>}
 			<ul className="products">
 				{Array.isArray(items) && items?.map((item) => 
