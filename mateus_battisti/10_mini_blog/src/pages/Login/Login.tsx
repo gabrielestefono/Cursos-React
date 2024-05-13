@@ -7,7 +7,7 @@ export default function Login(){
 	const [password, setPassword] = useState<string>('');
 	const [error, setError] = useState<string>('');
 
-	const {loading, error: authError} = useAuthentication();
+	const {loading, error: authError, login} = useAuthentication();
 
 	function handleSubmit(e: React.FormEvent<HTMLFormElement>){
 		e.preventDefault();
@@ -18,6 +18,8 @@ export default function Login(){
 			email,
             password
 		}
+
+		const res = login(user);
 	}
 
 	return (
@@ -35,7 +37,7 @@ export default function Login(){
 				</label>
 				{!loading && <button className="btn">Cadastrar</button>}
 				{loading && <button className="btn" disabled>Aguarde...</button>}
-				{error && <p className="error">{error}</p>}
+				{authError && <p className="error">{authError}</p>}
 			</form>
 		</div>
 	)

@@ -1,7 +1,7 @@
 import { app } from '../firebase/config';
 
 
-import { getAuth, createUserWithEmailAndPassword,  updateProfile, signOut } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword,  updateProfile, signOut, signInWithEmailAndPassword } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 export default function useAuthentication(){
@@ -60,6 +60,24 @@ export default function useAuthentication(){
 		signOut(auth);
 	}
 
+	// Login
+
+	async function login(data: {password: string, email: string}){
+		checkIfIsCancelled();
+
+		setLoading(true);
+		setError("");
+
+		try {
+			await signInWithEmailAndPassword(auth, data.email, data.password);
+			setLoading(false);
+		} catch (error: any) {
+			setError("Erro durante a autenticação. Por favor, verifique suas credenciais e tente novamente.");
+		}
+		setLoading(false);
+
+	} 
+
 	useEffect(()=>{
 		return () => setCancelled(true);
 	},[])
@@ -69,6 +87,7 @@ export default function useAuthentication(){
 		createUser,
 		error,
 		loading,
-		logout
+		logout,
+		login,
 	}
 }
