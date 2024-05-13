@@ -1,7 +1,7 @@
-import { db, app } from '../firebase/config';
+import { app } from '../firebase/config';
 
 
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword,  updateProfile } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
 export default function useAuthentication(){

@@ -1,6 +1,6 @@
 import './App.css';
 
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import useAuthentication from './hooks/useAuthentication';
 
@@ -13,6 +13,8 @@ import Login from './pages/Login/Login';
 import Register from './pages/Register/Register';
 import { AuthProvider } from './context/AuthContext';
 import { useEffect, useState } from 'react';
+import CreatePost from './pages/CreatePost/CreatePost';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 function App() {
 
@@ -42,6 +44,8 @@ function App() {
               <Route path='/about' element={<About/>}/>
               <Route path='/login' element={<Login/>}/>
               <Route path='/register' element={<Register/>}/>
+              <Route path='/posts/create' element={<CreatePost/>}/>
+              <Route path='/dashboard' element={<Dashboard/>}/>
             </Routes>
           </div>
           <Footer/>
